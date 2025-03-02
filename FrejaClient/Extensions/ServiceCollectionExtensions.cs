@@ -35,7 +35,7 @@ namespace FrejaClient.Extensions
                     var settings = new RefitSettings
                     {
                         ContentSerializer = new SystemTextJsonContentSerializer(GetJsonSerializerOptions()),
-                        FormUrlEncodedParameterFormatter = new FrejaFormUrlEncodedParameterFormatter()
+                        FormUrlEncodedParameterFormatter = new FrejaFormUrlEncodedParameterFormatter(new DefaultFormUrlEncodedParameterFormatter())
                     };
 
                     //settings.ExceptionFactory = async responseMessage =>

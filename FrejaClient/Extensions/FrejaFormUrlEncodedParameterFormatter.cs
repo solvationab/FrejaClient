@@ -5,8 +5,18 @@ using Refit;
 
 namespace FrejaClient.Extensions
 {
-    public class FrejaFormUrlEncodedParameterFormatter : DefaultFormUrlEncodedParameterFormatter
+    public class FrejaFormUrlEncodedParameterFormatter : IFormUrlEncodedParameterFormatter
     {
+        private readonly IFormUrlEncodedParameterFormatter parent;
+
+        public FrejaFormUrlEncodedParameterFormatter(IFormUrlEncodedParameterFormatter parent)
+        {
+            if (parent == null) 
+                throw new ArgumentNullException(nameof(parent));
+
+            this.parent = parent;
+        }
+
         private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
         {
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
@@ -18,7 +28,7 @@ namespace FrejaClient.Extensions
         /// <param name="parameterValue">The parameter value.</param>
         /// <param name="formatString">The format string.</param>
         /// <returns></returns>
-        public override string Format(object parameterValue, string formatString)
+        public string Format(object parameterValue, string formatString)
         {
             if (parameterValue != null && parameterValue.GetType().IsClass)
             {
@@ -29,7 +39,7 @@ namespace FrejaClient.Extensions
                 return base64;
             }
 
-            return base.Format(parameterValue, formatString);
+            return parent.Format(parameterValue, formatString);
         }
     }
 }
