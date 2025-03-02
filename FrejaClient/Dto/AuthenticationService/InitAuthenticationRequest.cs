@@ -13,7 +13,7 @@ namespace FrejaClient.Dto.AuthenticationService
         public InitAuthenticationRequestData Data { get; }
     }
 
-    public class InitAuthenticationRequestData : Base64DtoBase
+    public class InitAuthenticationRequestData
     {
         public InitAuthenticationRequestData(
             string userInfoType,

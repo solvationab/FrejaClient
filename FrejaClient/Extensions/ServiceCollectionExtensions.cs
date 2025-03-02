@@ -3,6 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using System;
+using System.Collections.Concurrent;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text.Json;
 
 namespace FrejaClient.Extensions
@@ -29,7 +34,8 @@ namespace FrejaClient.Extensions
                 {
                     var settings = new RefitSettings
                     {
-                        ContentSerializer = new SystemTextJsonContentSerializer(GetJsonSerializerOptions())
+                        ContentSerializer = new SystemTextJsonContentSerializer(GetJsonSerializerOptions()),
+                        FormUrlEncodedParameterFormatter = new FrejaFormUrlEncodedParameterFormatter()
                     };
 
                     //settings.ExceptionFactory = async responseMessage =>
