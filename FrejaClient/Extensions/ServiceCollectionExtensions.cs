@@ -3,11 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using System;
-using System.Collections.Concurrent;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text.Json;
 
 namespace FrejaClient.Extensions
@@ -38,25 +33,25 @@ namespace FrejaClient.Extensions
                         FormUrlEncodedParameterFormatter = new FrejaFormUrlEncodedParameterFormatter(new DefaultFormUrlEncodedParameterFormatter())
                     };
 
-                    //settings.ExceptionFactory = async responseMessage =>
-                    //{
-                    //    if (responseMessage.IsSuccessStatusCode)
-                    //        return null;
+                    // TODO: Extract this into separate class implementing IExceptionFactory
+                    settings.ExceptionFactory = async responseMessage =>
+                    {
+                        if (responseMessage.IsSuccessStatusCode)
+                            return null;
 
-                    //    var frejaErrorResponse = await responseMessage.Content.ReadFromJsonAsync<FrejaErrorResponse>();
+                        // TODO: Add all error codes
+                        if ((int)responseMessage.StatusCode == 1001)
+                        {
+                            return new FrejaException("Invalid or missing userInfoType.");
+                        }
 
-                    //    if (frejaErrorResponse != null)
-                    //    {
-                    //        return new FrejaException(frejaErrorResponse);
-                    //    }
+                        var requestMessage = responseMessage.RequestMessage;
 
-                    //    var requestMessage = responseMessage.RequestMessage;
+                        var method = requestMessage.Method;
 
-                    //    var method = requestMessage.Method;
-
-                    //    return await ApiException
-                    //        .Create(requestMessage, method, responseMessage, settings);
-                    //};
+                        return await ApiException
+                            .Create(requestMessage, method, responseMessage, settings);
+                    };
 
                     return settings;
                 })
