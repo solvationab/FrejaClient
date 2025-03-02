@@ -8,7 +8,7 @@ Install and register using .AddFrejaClient service collection extension
 
 ### Prerequisites
 
-It's required to have a Freja certificates.
+It's required to have Freja certificates.
 
 ## Usage
 
