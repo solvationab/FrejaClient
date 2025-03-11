@@ -11,13 +11,13 @@ namespace FrejaClient
         Task<InitAuthenticationResponse> InitAuthentication([Body(BodySerializationMethod.UrlEncoded)] InitAuthenticationRequest request);
 
         [Post("/authentication/1.0/getOneResult")]
-        Task<GetOneResultResponse> GetOneResult([Body] GetOneResultRequest request);
+        Task<GetOneResultResponse> GetOneResult([Body(BodySerializationMethod.UrlEncoded)] GetOneResultRequest request);
 
         [Post("/authentication/1.0/getResults")]
-        Task<GetResultsResponse> GetResults([Body] GetResultsRequest request);
+        Task<GetResultsResponse> GetResults([Body(BodySerializationMethod.UrlEncoded)] GetResultsRequest request);
 
         [Post("/authentication/1.0/cancel")]
-        Task<CancelResponse> Cancel([Body] CancelRequest request);
+        Task<CancelResponse> Cancel([Body(BodySerializationMethod.UrlEncoded)] CancelRequest request);
         #endregion
 
         #region Signature Service
