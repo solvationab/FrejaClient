@@ -12,13 +12,13 @@ namespace FrejaClient
         Task<InitAuthenticationResponse> InitAuthentication([Body(BodySerializationMethod.UrlEncoded)] InitAuthenticationRequest request);
 
         [Post("/authentication/1.0/getOneResult")]
-        Task<GetOneAuthenticationResultResponse> GetOneResult([Body(BodySerializationMethod.UrlEncoded)] GetOneAuthenticationResultRequest request);
+        Task<GetOneAuthenticationResultResponse> GetOneAuthenticationResult([Body(BodySerializationMethod.UrlEncoded)] GetOneAuthenticationResultRequest request);
 
         [Post("/authentication/1.0/getResults")]
-        Task<GetAuthenticationResultsResponse> GetResults([Body(BodySerializationMethod.UrlEncoded)] GetAuthenticationResultsRequest request);
+        Task<GetAuthenticationResultsResponse> GetAuthenticationResults([Body(BodySerializationMethod.UrlEncoded)] GetAuthenticationResultsRequest request);
 
         [Post("/authentication/1.0/cancel")]
-        Task<CancelAuthenticationResponse> Cancel([Body(BodySerializationMethod.UrlEncoded)] CancelAuthenticationRequest request);
+        Task<CancelAuthenticationResponse> CancelAuthentication([Body(BodySerializationMethod.UrlEncoded)] CancelAuthenticationRequest request);
         #endregion
 
         #region Signature Service
@@ -26,13 +26,13 @@ namespace FrejaClient
         Task<InitSignatureResponse> InitSignature([Body(BodySerializationMethod.UrlEncoded)] InitSignatureRequest request);
 
         [Post("/sign/1.0/getOneResult")]
-        Task<GetOneSignatureResultResponse> GetOneResult([Body(BodySerializationMethod.UrlEncoded)] GetOneSignatureResultRequest request);
+        Task<GetOneSignatureResultResponse> GetOneSignatureResult([Body(BodySerializationMethod.UrlEncoded)] GetOneSignatureResultRequest request);
 
         [Post("/sign/1.0/getResults")]
-        Task<GetSignatureResultsResponse> GetResults([Body(BodySerializationMethod.UrlEncoded)] GetSignatureResultsRequest request);
+        Task<GetSignatureResultsResponse> GetSignatureResults([Body(BodySerializationMethod.UrlEncoded)] GetSignatureResultsRequest request);
 
         [Post("/sign/1.0/cancel")]
-        Task<CancelSignatureResponse> Cancel([Body(BodySerializationMethod.UrlEncoded)] CancelSignatureRequest request);
+        Task<CancelSignatureResponse> CancelSignature([Body(BodySerializationMethod.UrlEncoded)] CancelSignatureRequest request);
         #endregion
 
         #region Organisation ID Service
