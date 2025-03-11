@@ -26,3 +26,8 @@ var response = await frejaClient.Authenticate();
 ## Feedback
 
 https://github.com/solvationab/FrejaClient
+
+## Missing something or need help?
+
+Contact us at info@solvation.se
+
