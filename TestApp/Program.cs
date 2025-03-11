@@ -7,7 +7,7 @@ Console.WriteLine("Started");
 
 var serviceCollection = new ServiceCollection();
 
-serviceCollection.AddFrejaClient("https://jsonplaceholder.typicode.com/");
+serviceCollection.AddFrejaClient();
 
 var serviceProvider = serviceCollection.BuildServiceProvider();
 
