@@ -1,6 +1,6 @@
 ﻿namespace FrejaClient.Dto.AuthenticationService
 {
-    public class GetOneResultRequest
+    public class GetOneAuthenticationResultRequest
     {
         // TODO: Add properties
     }

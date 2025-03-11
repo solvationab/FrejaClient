@@ -1,6 +1,6 @@
 ﻿namespace FrejaClient.Dto.AuthenticationService
 {
-    public class CancelResponse
+    public class GetAuthenticationResultsResponse
     {
     }
 }
