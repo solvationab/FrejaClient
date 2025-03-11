@@ -1,4 +1,4 @@
-﻿using Refit;
+﻿using System.Text.Json.Serialization;
 
 namespace FrejaClient.Dto.AuthenticationService
 {
@@ -9,7 +9,7 @@ namespace FrejaClient.Dto.AuthenticationService
             Data = data;
         }
 
-        [AliasAs("initAuthRequest")]
+        [JsonPropertyName("initAuthRequest")]
         public InitAuthenticationRequestData Data { get; }
     }
 
@@ -30,14 +30,14 @@ namespace FrejaClient.Dto.AuthenticationService
             AttributesToReturn = attributesToReturn;
         }
 
-        [AliasAs("userInfoType")] public string UserInfoType { get; }
+        [JsonPropertyName("userInfoType")] public string UserInfoType { get; }
 
-        [AliasAs("userInfo")] public string UserInfo { get; }
+        [JsonPropertyName("userInfo")] public string UserInfo { get; }
 
-        [AliasAs("minRegistrationLevel")] public string MinRegistrationLevel { get; }
+        [JsonPropertyName("minRegistrationLevel")] public string MinRegistrationLevel { get; }
 
-        [AliasAs("userConfirmationMethod")] public string UserConfirmationMethod { get; }
+        [JsonPropertyName("userConfirmationMethod")] public string UserConfirmationMethod { get; }
 
-        [AliasAs("attributesToReturn")] public string[] AttributesToReturn { get; }
+        [JsonPropertyName("attributesToReturn")] public string[] AttributesToReturn { get; }
     }
 }
